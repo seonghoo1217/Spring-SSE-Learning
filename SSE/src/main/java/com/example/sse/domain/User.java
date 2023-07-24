@@ -1,11 +1,17 @@
 package com.example.sse.domain;
 
+import lombok.*;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,4 +23,7 @@ public class User {
 
     private Integer age;
 
+    public void updateEmail(String email){
+        this.email=email;
+    }
 }
