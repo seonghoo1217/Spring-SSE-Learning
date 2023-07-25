@@ -31,11 +31,6 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.7.11'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.7.11'
-    // https://mvnrepository.com/artifact/com.h2database/h2
-    runtimeOnly 'com.h2database:h2'
-    // https://mvnrepository.com/artifact/com.h2database/h2
-    testImplementation group: 'com.h2database', name: 'h2', version: '2.2.220'
-
     // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
     implementation platform('io.projectreactor:reactor-bom:Bismuth-SR9')
 
@@ -44,6 +39,15 @@ dependencies {
 
     implementation 'org.slf4j:slf4j-api:1.7.12'
     implementation 'ch.qos.logback:logback-classic:1.2.3'
+
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+/*    implementation("org.infinispan:infinispan-core:12.0.1.Final")
+    implementation("org.infinispan:infinispan-commons:12.0.1.Final")
+    implementation("org.infinispan:infinispan-marshaller-protostuff:12.0.1.Final")
+    implementation("org.jboss.marshalling:jboss-marshalling-osgi:2.0.10.Final")*/
 }
 
 tasks.named('test') {
