@@ -1,17 +1,14 @@
 package com.example.sse.testCase.service;
 
-import com.example.sse.domain.User;
-import com.example.sse.handler.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
-public class ReactiveService {
+public class ReactiveService0 {
 
     /*private final UserRepository userRepository;
 
