@@ -23,4 +23,15 @@ public class SSETestAPI {
 
         return responseStream;
     }
+
+    @GetMapping("/simple/generate")
+    public Flux<ServerSentEvent<String>> streamDataToClient() {
+        return Flux.interval(Duration.ofSeconds(1))
+                .map(sequence -> ServerSentEvent.<String>builder()
+                        .id(String.valueOf(sequence))
+                        .event("custom-event") // 이벤트 이름 (클라이언트에서 사용)
+                        .data("Data " + sequence) // 보낼 데이터
+                        .build()
+                );
+    }
 }
