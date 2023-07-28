@@ -41,13 +41,19 @@ public class RoomSseAPI {
 
     @PostMapping(path = "/room/{roomId}")
     public Flux<ServerSentEvent<RoomResponseDTO>> roomSSE(@PathVariable("roomId")Long roomId, @RequestBody RoomRequestDTO roomRequestDTO){
-        return Flux.interval(Duration.ofSeconds(1))
+        /*return Flux.interval(Duration.ofSeconds(1))
                 .map(t -> RoomResponseDTO.builder()
                         .roomId(roomId)
                         .timeStamp(roomRequestDTO.getTimeStamp())
                         .status(roomRequestDTO.getStatus())
                         .build())
                 .map(rs -> ServerSentEvent.builder(rs).build());
-
+*/
+        return Flux.just(RoomResponseDTO.builder()
+                .roomId(roomId)
+                .timeStamp(roomRequestDTO.getTimeStamp())
+                .status(roomRequestDTO.getStatus())
+                .build())
+                .map(rs->ServerSentEvent.builder(rs).build());
     }
 }
