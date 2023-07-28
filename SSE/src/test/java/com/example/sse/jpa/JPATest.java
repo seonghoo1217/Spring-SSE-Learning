@@ -1,8 +1,9 @@
 package com.example.sse.jpa;
 
 import com.example.sse.domain.Room;
+import com.example.sse.domain.Status;
 import com.example.sse.domain.User;
-import com.example.sse.service.RoomService;
+import com.example.sse.service.room.RoomService;
 import com.example.sse.service.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -57,6 +58,7 @@ public class JPATest {
             roomService.createRoom(
                     Room.builder()
                             .roomName("Test"+i)
+                            .status(Status.START)
                             .roomCode(UUID.randomUUID().toString())
                             .build()
             );

@@ -6,7 +6,7 @@ spring:
     password: 1234
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
 #  r2dbc:
 #    url: r2dbc:mariadb://localhost:3306/webflux

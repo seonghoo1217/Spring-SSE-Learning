@@ -21,4 +21,6 @@ public class Room {
     private String roomName;
 
     private String roomCode;
+
+    private Status status;
 }

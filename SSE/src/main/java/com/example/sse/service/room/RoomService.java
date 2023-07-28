@@ -1,4 +1,4 @@
-package com.example.sse.service;
+package com.example.sse.service.room;
 
 import com.example.sse.domain.Room;
 import com.example.sse.repo.RoomRepository;
