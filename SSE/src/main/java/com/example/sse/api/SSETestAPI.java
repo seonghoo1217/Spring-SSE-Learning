@@ -1,8 +1,11 @@
 package com.example.sse.api;
 
+import com.example.sse.dto.TestRequestDTO;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -27,6 +30,20 @@ public class SSETestAPI {
                     }
                 });
     }
+
+    /*@PostMapping(value = "/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public void sseStream(@RequestBody TestRequestDTO testRequestDTO) {
+        return Flux.just("SSE Connection")
+                .map(sequence -> ServerSentEvent.builder(sequence).build())
+                .doFinally(signalType -> {
+                    if (signalType== SignalType.ON_COMPLETE){
+                        System.out.println("Connection!");
+
+                    }else if (signalType==SignalType.CANCEL){
+                        System.out.println("Cancle!");
+                    }
+                });
+    }*/
 
     @GetMapping("/simple/test")
     public Flux<ServerSentEvent<String>> getHealthCheck(){

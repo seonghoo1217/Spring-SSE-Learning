@@ -34,7 +34,7 @@ public class RoomSseAPI {
                 .map(str->ServerSentEvent.builder(str).build());
     }
 
-    @PostMapping(path = "/channels/room/{roomId}/messages",consumes = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(path = "/channels/room/{roomId}/messages")
     public void send(@PathVariable("roomId")Long roomId, @RequestBody String message){
         roomChannels.post(roomId,message);
     }
