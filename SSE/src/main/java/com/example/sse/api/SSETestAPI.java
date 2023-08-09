@@ -15,11 +15,8 @@ public class SSETestAPI {
 
     @GetMapping(value = "/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ServerSentEvent<String>> sseStream() {
-        return Flux.just("SSE Connection")
-                .map(sequence -> ServerSentEvent.builder(sequence).build())
-                .doOnComplete(()->{
-                    System.out.println("SSE 연결완료!");
-                });
+        return Flux.interval(Duration.ofSeconds(1))
+                .map(sequence -> ServerSentEvent.builder("HEllo!").build());
     }
 
     @GetMapping("/simple/test")
