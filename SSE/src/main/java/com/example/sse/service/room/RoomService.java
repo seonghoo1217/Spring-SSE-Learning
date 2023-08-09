@@ -1,3 +1,4 @@
+/*
 package com.example.sse.service.room;
 
 import com.example.sse.domain.Room;
@@ -14,3 +15,4 @@ public class RoomService {
         roomRepository.save(room);
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
     package com.example.sse.repo;
 
     import com.example.sse.domain.User;
@@ -8,3 +9,4 @@
     @Repository
     public interface UserRepository extends JpaRepository<User,Long> {
     }
+*/

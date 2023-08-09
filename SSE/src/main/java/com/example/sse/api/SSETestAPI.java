@@ -1,6 +1,6 @@
 package com.example.sse.api;
 
-import com.example.sse.domain.User;
+import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +12,16 @@ import java.time.LocalDateTime;
 
 @RestController
 public class SSETestAPI {
+
+    @GetMapping(value = "/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<ServerSentEvent<String>> sseStream() {
+        return Flux.just("SSE Connection")
+                .map(sequence -> ServerSentEvent.builder(sequence).build())
+                .doOnComplete(()->{
+                    System.out.println("SSE 연결완료!");
+                });
+    }
+
     @GetMapping("/simple/test")
     public Flux<ServerSentEvent<String>> getHealthCheck(){
         Mono<String> health1 = Mono.just("현재시간:" + LocalDateTime.now() + "입니다");

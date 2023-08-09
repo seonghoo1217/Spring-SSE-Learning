@@ -1,3 +1,4 @@
+/*
 package com.example.sse.domain;
 
 import lombok.*;
@@ -24,3 +25,4 @@ public class User {
         this.email=email;
     }
 }
+*/
