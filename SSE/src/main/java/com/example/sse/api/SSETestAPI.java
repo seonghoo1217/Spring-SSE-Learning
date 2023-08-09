@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.SignalType;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -16,7 +17,15 @@ public class SSETestAPI {
     @GetMapping(value = "/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ServerSentEvent<String>> sseStream() {
         return Flux.just("SSE Connection")
-                .map(sequence -> ServerSentEvent.builder(sequence).build());
+                .map(sequence -> ServerSentEvent.builder(sequence).build())
+                .doFinally(signalType -> {
+                    if (signalType== SignalType.ON_COMPLETE){
+                        System.out.println("Connection!");
+
+                    }else if (signalType==SignalType.CANCEL){
+                        System.out.println("Cancle!");
+                    }
+                });
     }
 
     @GetMapping("/simple/test")
